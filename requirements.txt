@@ -1,0 +1,12 @@
+selenium
+pyttsx3
+pypiwin32
+pyaudio
+wikipedia
+youtube_dl
+beautifulsoup4
+webdriver-manager
+wolframalpha
+wikipedia
+SpeechRecognition
+google

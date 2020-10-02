@@ -1,13 +1,3 @@
-#pip install selenium
-#pip install webbrowser
-#pip install pyttsx3
-#pip install pypiwin32
-#pipwin install pyaudio
-#pip install wikipedia
-#pip install wolframalpha
-#pip insatll youtube-d1
-#pip install beautifulsoup4
-#pip install speechRecognition
 import os
 import sys
 import datetime
