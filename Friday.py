@@ -10,6 +10,7 @@ import smtplib
 import random
 import time
 import json
+import pafy
 import requests
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -173,6 +174,30 @@ if  __name__ =="__main__":
 						str(current_humidity)+" % "+
 						"\n description is "+
 						str(weather_desc))
+			elif "download" in Input:
+				try:
+					talk("which youtube video you wanna Download  in audio")
+					song=GiveCommand()	
+					driver = webdriver.Chrome(r"C:/Users/asus/Downloads/chromedriver_win32/chromedriver.exe")	
+					driver.get("https://www.youtube.com/results?search_query=+"+song)
+					driver.find_elements_by_xpath("/html/body/ytd-app/div/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/div/div[1]/div/h3/a/yt-formatted-string")[0].click()
+					url=driver.current_url
+					time.sleep(3)
+					driver.quit()
+					print(url)
+					try:
+						video= pafy.new(url)
+						audio=video.audiostreams
+						for i in audio:
+							print(i.bitrate, i.extension, i.get_filesize())
+						audio[3].download()
+						talk("your file has been downloaded successfully")
+					except:
+						talk("something went wrong please try again")
+					
+				except:
+					talk("sorry unable to find your file")
+
 			else:
 				talk("Searcing on google for" + Input)
 				say=Input.replace(" ","+")
